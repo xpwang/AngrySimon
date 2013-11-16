@@ -1,19 +1,17 @@
 package edu.iastate.angrysimon;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
-public class SimonActivity extends CustomGestureListener {
+public class SimonActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simon);
-        super.setGestureDetector(new GestureDetector(this.getApplicationContext(), this));
-		super.setLeftRight(ScoreBoardActivity.class, ScoreBoardActivity.class);
     }
 
 
