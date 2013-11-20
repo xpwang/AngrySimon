@@ -113,12 +113,16 @@ public class SimonActivity extends CustomGestureListener {
 			 * pattern
 			 */
 			case LISTENING:
+				
+				
+				
 				break;
 			/*
 			 * Show score dialog
 			 */
 			case END:
-
+				isRunning = false;
+				finishDialog();
 				break;
 			default:
 				break;
@@ -132,12 +136,19 @@ public class SimonActivity extends CustomGestureListener {
 	private void showAction(Action action) {
 
 	}
+	
+	/*
+	 * Creates and displays the game over dialog
+	 */
+	private void finishDialog(){
+		
+	}
 
 	/*
 	 * Red Button onClick method, does nothing unless game is listening If game
 	 * is listening, test if this is the next action in the pattern
 	 */
-	public void redOnClick(View view) {
+	public void buttonOnClick(View view) {
 		Toast t = Toast.makeText(getApplicationContext(),
 				"ID: " + view.getId(), Toast.LENGTH_SHORT);
 		t.show();
