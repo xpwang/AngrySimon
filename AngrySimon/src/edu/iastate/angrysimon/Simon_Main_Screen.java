@@ -1,6 +1,7 @@
 package edu.iastate.angrysimon;
 
 import android.view.GestureDetector;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,7 +12,7 @@ import android.widget.Button;
 
 
 
-public class Simon_Main_Screen extends CustomGestureListener{
+public class Simon_Main_Screen extends Activity{
 	 
 	private String Game_Mode="Classic";
 	//private CustomGestureListener Gesture_Main_Screen = new CustomGestureListener();
@@ -21,10 +22,10 @@ public class Simon_Main_Screen extends CustomGestureListener{
 	 super.onCreate(savedInstanceState);
 	        
      setContentView(R.layout.activity_main_screen);
-	 super.setGestureDetector(new GestureDetector(this.getApplicationContext(), this));
-	 super.setLeftRight(ScoreBoardActivity.class, SimonActivity.class);   
+	// super.setGestureDetector(new GestureDetector(this.getApplicationContext(), this));
+	// super.setLeftRight(ScoreBoardActivity.class, SimonActivity.class);   
 	       
-	 final Intent GotoGame_Intent = new Intent(this, SimonActivity.class);
+	final Intent GotoGame_Intent = new Intent(this, SimonActivity.class);
 	        
 	 //       Gesture_Main_Screen.setLeftRight(Simon_Settings_Screen.class, ScoreBoardActivity.class);
 	        
@@ -36,6 +37,7 @@ public class Simon_Main_Screen extends CustomGestureListener{
 	        Classic_Button.setOnClickListener(new View.OnClickListener() {
 	   		
 	   	    public void onClick(View v) {
+	   	     //Intent GotoGame_Intent = new Intent(this, SimonActivity.class);
 	   	    	Game_Mode="Classic";
 	   	    	GotoGame_Intent.putExtra("Game_Mode",Game_Mode);
 	   	    	startActivity(GotoGame_Intent);
@@ -48,6 +50,7 @@ public class Simon_Main_Screen extends CustomGestureListener{
 	   	Angry_Button.setOnClickListener(new View.OnClickListener() {
 	   		
 	   	    public void onClick(View v) {
+	   	    	//Mode =  Angry;
 	   	    	Game_Mode="Angry";
 	   	    	GotoGame_Intent.putExtra("Game_Mode",Game_Mode);
 	   	    	startActivity(GotoGame_Intent);
@@ -89,6 +92,11 @@ public class Simon_Main_Screen extends CustomGestureListener{
 	              // intent add open new activity
 	        	  Intent Settings_Intent = new Intent(this,Simon_Settings_Screen.class);
 	        	  startActivity(Settings_Intent);
+	        	  return true;
+	          case R.id.score_board:
+	              // intent add open new activity
+	        	  Intent ScoreBoard_Intent = new Intent(this,ScoreBoardActivity.class);
+	        	  startActivity(ScoreBoard_Intent);
 	        	  return true;
 	          default:
 	              return super.onOptionsItemSelected(item);

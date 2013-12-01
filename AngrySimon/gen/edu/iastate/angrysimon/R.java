@@ -39,6 +39,7 @@ public final class R {
         public static final int game_over_text=0x7f09000a;
         public static final int name_text_box=0x7f09000e;
         public static final int play_again_button=0x7f090010;
+        public static final int score_board=0x7f090012;
         public static final int score_layout=0x7f09000b;
         public static final int score_num_text=0x7f09000d;
         public static final int score_text=0x7f09000c;
@@ -46,9 +47,8 @@ public final class R {
     public static final class layout {
         public static final int activity_main_screen=0x7f030000;
         public static final int activity_score_board=0x7f030001;
-        public static final int activity_settings_screen=0x7f030002;
-        public static final int activity_simon=0x7f030003;
-        public static final int game_finished_dialog=0x7f030004;
+        public static final int activity_simon=0x7f030002;
+        public static final int game_finished_dialog=0x7f030003;
     }
     public static final class menu {
         public static final int score_board=0x7f080000;
@@ -64,6 +64,7 @@ public final class R {
         public static final int play_again_button=0x7f060007;
         public static final int score=0x7f060005;
         public static final int title_activity_score_board=0x7f060003;
+        public static final int title_main_screen=0x7f060008;
     }
     public static final class style {
         /** 
@@ -94,6 +95,6 @@ public final class R {
         public static final int AppTheme=0x7f070001;
     }
     public static final class xml {
-        public static final int activity_main_screen=0x7f040000;
+        public static final int angry_simon_game_settings=0x7f040000;
     }
 }
