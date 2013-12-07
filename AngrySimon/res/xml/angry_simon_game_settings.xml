@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory  android:title="Game Settings">
+           
+           <CheckBoxPreference 
+            android:key="Vibrate"
+            android:summary=" Turns Vibration On or Off"
+            android:title="Vibrate ON/OFF"
+            android:defaultValue="true"
+            />
+           
+          <CheckBoxPreference 
+            android:key="Sound"
+            android:summary=" Turns Sound On or Off"
+            android:title="Sound ON/OFF"
+            android:defaultValue="true"
+            />
+        
+    </PreferenceCategory>
+    
+      <PreferenceCategory  android:title="User Settings">
+     
+        <EditTextPreference 
+            android:key="Username"
+            android:title="User name"
+            android:summary="Change Default Username"
+            android:dialogTitle="User Name"
+            android:dialogMessage="Please, enter your name"
+       
+            />
+    		
+    	<Preference
+    		android:key="Clear_Score_Board"
+    		android:title="Clear Score Board"
+    		android:summary="Clears Score Board"
+    		android:dialogTitle="Reset Score Board"
+            android:dialogMessage="Are you sure you want to reset Score Board, all information will be removed?"	
+       		/>
+    </PreferenceCategory>
+
+</PreferenceScreen>
