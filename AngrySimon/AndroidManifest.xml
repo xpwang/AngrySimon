@@ -33,7 +33,7 @@
         </activity>
         
         <activity
-            android:name="edu.iastate.angrysimon.ScoreBoardActivity"
+            android:name="edu.iastate.scoreboard.ScoreboardActivity"
             android:label="@string/title_activity_score_board" >
         </activity>
     </application>
