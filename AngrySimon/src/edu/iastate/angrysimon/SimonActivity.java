@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+//test comment
 public class SimonActivity extends CustomGestureListener {
 
 	/*
