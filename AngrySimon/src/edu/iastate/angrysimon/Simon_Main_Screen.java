@@ -1,5 +1,6 @@
 package edu.iastate.angrysimon;
 
+import edu.iastate.scoreboard.ScoreboardActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -99,7 +100,7 @@ public class Simon_Main_Screen extends Activity{
 	        	  return true;
 	          case R.id.score_board:
 	              // intent add open new activity
-	        	  Intent ScoreBoard_Intent = new Intent(this,ScoreBoardActivity.class);
+	        	  Intent ScoreBoard_Intent = new Intent(this, ScoreboardActivity.class);
 	        	  startActivity(ScoreBoard_Intent);
 	        	  return true;
 	          default:
