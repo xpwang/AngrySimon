@@ -3,9 +3,13 @@ package edu.iastate.angrysimon;
 import java.util.ArrayList;
 import java.util.Random;
 
+import android.app.AlertDialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -13,6 +17,7 @@ import android.widget.Button;
 import android.widget.Toast;
 //hi eric
 //hi peter
+
 public class SimonActivity extends CustomGestureListener {
 
 	/*
@@ -151,7 +156,8 @@ public class SimonActivity extends CustomGestureListener {
 			 * pattern
 			 */
 			case LISTENING:
-
+				for(int i = 0; i < run; i++){
+				}
 				break;
 			/*
 			 * Show score dialog
@@ -213,6 +219,41 @@ public class SimonActivity extends CustomGestureListener {
 	 * Creates and displays the game over dialog
 	 */
 	private void finishDialog() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(R.string.game_over);
+		LayoutInflater inflater = this.getLayoutInflater();
+
+		builder.setView(inflater.inflate(R.layout.game_finished_dialog, null));
+
+		builder.setPositiveButton(R.string.play_again,
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO reset everything and play again
+
+					}
+				});
+		builder.setNegativeButton(R.string.finish,
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO send to main menu
+
+					}
+				});
+		builder.setNeutralButton(R.string.save_score,
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO submit high score and send to scoreboard
+
+					}
+				});
+
+		builder.create().show();
 
 	}
 
@@ -220,12 +261,38 @@ public class SimonActivity extends CustomGestureListener {
 	 * Red Button onClick method, does nothing unless game is listening If game
 	 * is listening, test if this is the next action in the pattern
 	 */
-	public void buttonOnClick(View view) {
+	public boolean buttonOnClick(View view) {
 		Toast t = Toast.makeText(getApplicationContext(),
 				"ID: " + view.getId(), Toast.LENGTH_SHORT);
 		t.show();
+		Action incomingAction = null;
 		if (gameState == State.LISTENING) {
-
+			switch (view.getId()) {
+			case R.id.button_red:
+				incomingAction = Action.RED;
+				break;
+			case R.id.button_blue:
+				incomingAction = Action.BLUE;
+				break;
+			case R.id.button_green:
+				incomingAction = Action.GREEN;
+				break;
+			case R.id.button_yellow:
+				incomingAction = Action.YELLOW;
+				break;
+			case R.id.button_orange:
+				incomingAction = Action.ORANGE;
+				break;
+			case R.id.button_violet:
+				incomingAction = Action.VIOLET;
+				break;
+			default:
+				break;
+			}
+			if (incomingAction == actions.get(progress)) {
+				return true;
+			}
 		}
+		return false;
 	}
 }

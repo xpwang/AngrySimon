@@ -17,21 +17,30 @@ public class EndGameDialog extends DialogFragment {
 
 		builder.setView(inflater.inflate(R.layout.game_finished_dialog, null));
 
-		builder.setPositiveButton(R.string.play_again_button,
+		builder.setPositiveButton(R.string.play_again,
 				new DialogInterface.OnClickListener() {
 
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						// TODO Auto-generated method stub
+						// TODO reset everything and play again
 
 					}
 				});
-		builder.setNegativeButton(R.string.done_button,
+		builder.setNegativeButton(R.string.finish,
 				new DialogInterface.OnClickListener() {
 
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						// TODO Auto-generated method stub
+						// TODO send to main menu
+
+					}
+				});
+		builder.setNeutralButton(R.string.save_score,
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO submit high score and send to scoreboard
 
 					}
 				});

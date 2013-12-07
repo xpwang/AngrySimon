@@ -9,7 +9,8 @@
     <string name="score">Score: </string>
     <string name="title_main_screen"> Angry Simon</string>
     <string name="name_text">Name: </string>
-    <string name="done_button">Done</string>
-    <string name="play_again_button">Play Again</string>
+    <string name="finish">Finish</string>
+    <string name="save_score">Save Score</string>
+    <string name="play_again">Play Again</string>
 
 </resources>
