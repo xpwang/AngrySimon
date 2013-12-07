@@ -12,7 +12,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 //hi eric
-//hi pete
+//hi peter
 //more comments
 public class SimonActivity extends CustomGestureListener {
 
