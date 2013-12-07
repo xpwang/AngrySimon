@@ -14,6 +14,7 @@ import android.widget.Toast;
 //hi eric
 //lskdjf
 //dsf
+
 public class SimonActivity extends CustomGestureListener {
 
 	/*
