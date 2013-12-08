@@ -5,10 +5,5 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="Settings"/>
-     <item
-        android:id="@+id/score_board"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="Score Board"/>
 
 </menu>

@@ -5,7 +5,6 @@ import java.util.List;
 import edu.iastate.angrysimon.R;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.GestureDetector;
 import android.view.Menu;
 import android.widget.TextView;
 

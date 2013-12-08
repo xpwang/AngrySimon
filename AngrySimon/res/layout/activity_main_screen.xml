@@ -1,32 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
-    android:gravity="center">
-    
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/button_Classic_Simon"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="100dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="50dp"
-        android:text="Classic" />
+    <ImageView
+        android:id="@+id/title_image"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:contentDescription="@string/title_description"
+        android:src="@drawable/main_title_image" />
 
-    <Button
-        android:id="@+id/button_Angry_Simon"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="100dp"
-        android:layout_height="75dp"
-        android:layout_below="@+id/button_Classic_Simon"
-        android:text="Angry" />
-    
-   <Button
-       android:id="@+id/button_Rage_Simon"
-       style="?android:attr/buttonStyleSmall"
-       android:layout_width="100dp"
-       android:layout_height="75dp"
-       android:layout_below="@+id/button_Angry_Simon"
-       android:text="Rage" />
+    <ImageButton
+        android:id="@+id/imagebutton_classic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/play_classic"
+        android:src="@drawable/classic_button_image" />
 
-</RelativeLayout>
+    <ImageButton
+        android:id="@+id/imagebutton_angry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/play_angry"
+        android:src="@drawable/angry_button_image" />
+
+    <ImageButton
+        android:id="@+id/imagebutton_rage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/play_rage"
+        android:src="@drawable/rage_button_image" />
+
+    <ImageButton
+        android:id="@+id/imagebutton_scoreboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/visit_scoreboard"
+        android:src="@drawable/scoreboard_button_image" />
+
+</LinearLayout>

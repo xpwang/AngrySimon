@@ -22,8 +22,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import edu.iastate.scoreboard.ScoreboardActivity;
-//hi eric
-//hello
 
 public class SimonActivity extends CustomGestureListener {
 
@@ -109,8 +107,7 @@ public class SimonActivity extends CustomGestureListener {
 		initButtons();
 		buildGameLayout();
 		initGame();
-		
-		
+
 	}
 
 	@Override
@@ -121,6 +118,7 @@ public class SimonActivity extends CustomGestureListener {
 		runGameLoop();
 	}
 
+	@Override
 	protected void onPause() {
 		super.onPause();
 		isRunning = false;

@@ -12,5 +12,10 @@
     <string name="finish">Finish</string>
     <string name="save_score">Save Score</string>
     <string name="play_again">Play Again</string>
+    <string name="play_classic">Classic</string>
+    <string name="play_angry">Angry</string>
+    <string name="play_rage">Rage</string>
+    <string name="visit_scoreboard">High Scores</string>
+    <string name="title_description">Welcome to Angry Simon</string>
 
 </resources>
