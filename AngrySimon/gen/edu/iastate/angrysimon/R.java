@@ -51,11 +51,11 @@ public final class R {
         public static final int imagebutton_scoreboard=0x7f09000d;
         public static final int name_text=0x7f090019;
         public static final int name_text_box=0x7f09001a;
+        public static final int pager=0x7f09000e;
         public static final int score_layout=0x7f090016;
         public static final int score_num_text=0x7f090018;
         public static final int score_text=0x7f090017;
         public static final int textView1=0x7f090006;
-        public static final int textView2=0x7f09000e;
         public static final int title_image=0x7f090009;
     }
     public static final class layout {
@@ -64,7 +64,10 @@ public final class R {
         public static final int activity_score_board=0x7f030002;
         public static final int activity_scoreboard=0x7f030003;
         public static final int activity_simon=0x7f030004;
-        public static final int game_finished_dialog=0x7f030005;
+        public static final int angry_tab_frag=0x7f030005;
+        public static final int classic_tab_frag=0x7f030006;
+        public static final int game_finished_dialog=0x7f030007;
+        public static final int rage_tab_frag=0x7f030008;
     }
     public static final class menu {
         public static final int main=0x7f080000;
