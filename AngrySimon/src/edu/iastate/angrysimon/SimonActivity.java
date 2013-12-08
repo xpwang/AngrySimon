@@ -3,19 +3,28 @@ package edu.iastate.angrysimon;
 import java.util.ArrayList;
 import java.util.Random;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+import edu.iastate.scoreboard.ScoreboardActivity;
 //hi eric
 //hello
+
 public class SimonActivity extends CustomGestureListener {
 
 	/*
@@ -77,16 +86,31 @@ public class SimonActivity extends CustomGestureListener {
 		setContentView(R.layout.activity_simon);
 
 		// Select game mode based on intent extra
-		gameMode = Mode.CLASSIC;
-		nActions = 4;
+		Intent intent = getIntent();
+		String mode = intent.getStringExtra("Game_Mode");
+		if (mode.equals("Classic")) {
+			gameMode = Mode.CLASSIC;
+			nActions = 4;
+		} else if (mode.equals("Angry")) {
+			gameMode = Mode.ANGRY;
+			nActions = 7;
+		} else if (mode.equals("Rage")) {
+			gameMode = Mode.RAGE;
+			nActions = 7;
+		} else {
+			gameMode = Mode.CLASSIC;
+			nActions = 4;
+		}
 
-		gameState = State.START;
 		actions = new ArrayList<Action>();
 		rand = new Random();
 
 		// Initialize game visual layout settings
 		initButtons();
-		buildGameLayout(gameMode);
+		buildGameLayout();
+		initGame();
+		
+		
 	}
 
 	@Override
@@ -95,6 +119,11 @@ public class SimonActivity extends CustomGestureListener {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		isRunning = true;
 		runGameLoop();
+	}
+
+	protected void onPause() {
+		super.onPause();
+		isRunning = false;
 	}
 
 	/*
@@ -112,10 +141,79 @@ public class SimonActivity extends CustomGestureListener {
 	/*
 	 * Builds game layout based on selected mode
 	 */
-	private void buildGameLayout(Mode mode) {
-		switch (mode) {
-		// TODO - build game layout
+	@SuppressLint("NewApi")
+	private void buildGameLayout() {
+
+		// Get screen size
+		Display display = getWindowManager().getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);
+		int width = size.x;
+		int height = size.y;
+
+		switch (gameMode) {
+		case CLASSIC:
+			orangeButton.setVisibility(View.GONE);
+			violetButton.setVisibility(View.GONE);
+
+			redButton.setWidth(width / 2);
+			redButton.setHeight(height / 2);
+			redButton.setX(0);
+			redButton.setY(0);
+			blueButton.setWidth(width / 2);
+			blueButton.setHeight(height / 2);
+			blueButton.setX(width / 2);
+			blueButton.setY(0);
+			greenButton.setWidth(width / 2);
+			greenButton.setHeight(height / 2);
+			greenButton.setX(0);
+			greenButton.setY(height / 2);
+			yellowButton.setWidth(width / 2);
+			yellowButton.setHeight(height / 2);
+			yellowButton.setX(width / 2);
+			yellowButton.setY(height / 2);
+
+			break;
+		case ANGRY:
+		case RAGE:
+
+			redButton.setWidth(width / 2);
+			redButton.setHeight(height / 2);
+			redButton.setX(0);
+			redButton.setY(0);
+			blueButton.setWidth(width / 2);
+			blueButton.setHeight(height / 2);
+			blueButton.setX(width / 2);
+			blueButton.setY(0);
+			greenButton.setWidth(width / 2);
+			greenButton.setHeight(height / 2);
+			greenButton.setX(0);
+			greenButton.setY(height / 3);
+			yellowButton.setWidth(width / 2);
+			yellowButton.setHeight(height / 2);
+			yellowButton.setX(width / 2);
+			yellowButton.setY(height / 3);
+			orangeButton.setWidth(width / 2);
+			orangeButton.setHeight(height / 2);
+			orangeButton.setX(0);
+			orangeButton.setY(2 * (height / 3));
+			violetButton.setWidth(width / 2);
+			violetButton.setHeight(height / 2);
+			violetButton.setX(width / 2);
+			violetButton.setY(2 * (height / 3));
+
+			break;
+		default:
+			break;
 		}
+	}
+
+	/*
+	 * Sets up the game to be started
+	 */
+	private void initGame() {
+		gameState = State.START;
+		actions.clear();
 	}
 
 	/*
@@ -154,7 +252,8 @@ public class SimonActivity extends CustomGestureListener {
 			 * pattern
 			 */
 			case LISTENING:
-				for(int i = 0; i < run; i++){
+				for (int i = 0; i < run; i++) {
+					// TODO - wait for user to input
 				}
 				break;
 			/*
@@ -217,42 +316,61 @@ public class SimonActivity extends CustomGestureListener {
 	 * Creates and displays the game over dialog
 	 */
 	private void finishDialog() {
+		isRunning = false;
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle(R.string.game_over);
 		LayoutInflater inflater = this.getLayoutInflater();
 
 		builder.setView(inflater.inflate(R.layout.game_finished_dialog, null));
 
+		// Reset everything and play again
 		builder.setPositiveButton(R.string.play_again,
 				new DialogInterface.OnClickListener() {
 
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						// TODO reset everything and play again
-
+						initGame();
+						runGameLoop();
 					}
 				});
+
+		// Send to main menu
 		builder.setNegativeButton(R.string.finish,
 				new DialogInterface.OnClickListener() {
 
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						// TODO send to main menu
-
+						Intent homeIntent = new Intent(SimonActivity.this,
+								Simon_Main_Screen.class);
+						startActivity(homeIntent);
+						finish();
 					}
 				});
+
+		// Save score and send to scoreboard screen
 		builder.setNeutralButton(R.string.save_score,
 				new DialogInterface.OnClickListener() {
 
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						// TODO submit high score and send to scoreboard
-
+						Intent scoreboardIntent = new Intent(
+								SimonActivity.this, ScoreboardActivity.class);
+						scoreboardIntent.putExtra("source", "game");
+						scoreboardIntent.putExtra("score", score);
+						EditText nameText = (EditText) ((AlertDialog) dialog)
+								.findViewById(R.id.name_text_box);
+						scoreboardIntent.putExtra("name", nameText.getText()
+								.toString().trim());
+						startActivity(scoreboardIntent);
+						finish();
 					}
 				});
 
-		builder.create().show();
-
+		Dialog dialog = builder.create();
+		TextView scoreText = (TextView) dialog
+				.findViewById(R.id.score_num_text);
+		scoreText.setText(score + "");
+		dialog.show();
 	}
 
 	/*
